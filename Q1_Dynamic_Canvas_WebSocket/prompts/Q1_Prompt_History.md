@@ -1259,5 +1259,1797 @@ Then stop and report the exact changes made.
 
 ---
 
+## Prompt 005
+**Date/Time:** 2026-08-12 23:56:34 IST
+**Purpose:** Q1 Implementation Plan v1.0 Creation
+
+### Exact Prompt
+# Q1 Prompt 005 — Implementation Plan
+
+We have now completed and approved the Q1 definition and design phases.
+
+AUTHORITATIVE DOCUMENTS:
+
+1. Original assignment PDF
+2. PROJECT_DOCUMENTATION/PRD/PRD_v1.0.md
+3. PROJECT_DOCUMENTATION/DESIGN_BRIEF/DESIGN_BRIEF_v1.0.md
+4. .agents/AGENTS.md
+5. PROJECT_DOCUMENTATION/WORKFLOW_RULES/AI_ENGINEERING_WORKFLOW.md
+
+The Q1 PRD and Design Brief are now FROZEN.
+
+We are moving into the IMPLEMENTATION PLANNING phase.
+
+IMPORTANT:
+
+This interaction is ONLY for creating the implementation plan.
+
+DO NOT write implementation code.
+DO NOT create source files.
+DO NOT install dependencies.
+DO NOT initialize npm.
+DO NOT create package.json.
+DO NOT create Playwright configuration.
+DO NOT create the WebSocket server.
+DO NOT create the Canvas application.
+DO NOT create tests.
+DO NOT run implementation tests.
+DO NOT modify the PRD.
+DO NOT modify the Design Brief.
+DO NOT modify Q2 or Q3.
+
+Record this exact prompt as:
+
+Q1 Prompt 005
+
+in:
+
+Q1_Dynamic_Canvas_WebSocket/prompts/Q1_Prompt_History.md
+
+
+==================================================
+1. OBJECTIVE
+==================================================
+
+Create a concrete, implementation-ready plan for Q1.
+
+The plan must translate the approved Design Brief into:
+
+- project structure
+- source-file responsibilities
+- implementation order
+- dependency plan
+- execution flow
+- test flow
+- verification flow
+- evidence capture points
+
+The plan must not introduce new functionality or requirements.
+
+
+==================================================
+2. IMPLEMENTATION DIRECTORY
+==================================================
+
+All Q1 implementation artifacts must remain inside:
+
+Q1_Dynamic_Canvas_WebSocket/
+
+The intended implementation area is:
+
+Q1_Dynamic_Canvas_WebSocket/source/
+
+Do not create implementation files elsewhere in the repository.
+
+Documentation remains under:
+
+PROJECT_DOCUMENTATION/
+
+
+==================================================
+3. PROPOSED SOURCE STRUCTURE
+==================================================
+
+Design the exact source directory structure required for the implementation.
+
+You may modify the following conceptual structure if the Design Brief supports a simpler arrangement:
+
+source/
+├── server/
+├── client/
+├── automation/
+├── testbed/
+├── config/
+└── ...
+
+Do NOT create the directories yet.
+
+For every proposed file/directory explain:
+
+- purpose
+- responsibility
+- inputs
+- outputs
+- dependencies
+- which Q1 acceptance criteria it supports
+
+Avoid unnecessary abstraction.
+
+
+==================================================
+4. IMPLEMENTATION ORDER
+==================================================
+
+Define the exact order in which implementation should occur.
+
+For example, conceptually:
+
+1. Project/runtime setup
+2. Local WebSocket server
+3. Canvas testbed
+4. WebSocket message model
+5. Playwright browser setup
+6. WebSocket interception
+7. Fibonacci jitter
+8. Canvas pixel detector
+9. Race execution
+10. Coordinate drift/circuit breaker
+11. Corrupted payload injection
+12. Exception-boundary validation
+13. Integrated Q1 workflow
+14. Verification/evidence
+
+Do not blindly copy this order.
+
+Determine the safest dependency-aware implementation sequence based on the approved Design Brief.
+
+Explain why each phase precedes the next.
+
+
+==================================================
+5. DEPENDENCY PLAN
+==================================================
+
+Define:
+
+- Node.js requirements
+- TypeScript requirements
+- Playwright requirements
+- ws requirements
+- browser requirement
+- any additional dependency only if genuinely necessary
+
+Do not install anything.
+
+Do not hardcode an outdated Playwright version.
+
+The implementation must use a Playwright version supporting:
+
+page.routeWebSocket / WebSocketRoute
+
+For every dependency explain why it is necessary.
+
+Prefer the minimum dependency set.
+
+
+==================================================
+6. CONFIGURATION PLAN
+==================================================
+
+Define the configuration values that should exist.
+
+Examples include:
+
+- WebSocket port
+- Canvas dimensions
+- target grid configuration
+- RGB tolerances
+- Fibonacci cap
+- race-window bounds
+- design circuit-breaker parameters
+- test mode
+
+Distinguish:
+
+ASSIGNMENT CONSTANTS
+
+from:
+
+CONFIGURABLE DESIGN PARAMETERS
+
+Do not create configuration for values that do not need to vary.
+
+
+==================================================
+7. WEBSOCKET SERVER PLAN
+==================================================
+
+Define exactly how the local WebSocket server should behave.
+
+Specify:
+
+- startup
+- connection handling
+- normal message sequence
+- state updates
+- target movement
+- balance state
+- corrupted state scenario
+- shutdown
+
+Define the minimum server behavior necessary for Q1.
+
+Do not add unrelated endpoints or application features.
+
+
+==================================================
+8. CANVAS CLIENT PLAN
+==================================================
+
+Define exactly what the HTML/JavaScript Canvas client needs to implement.
+
+Include:
+
+- Canvas initialization
+- grid rendering
+- loading state
+- active state
+- target state
+- drift/repaint simulation
+- WebSocket message handling
+- pixel-state rendering
+- mathematical state handling
+- structured exception/validation boundary
+
+Keep the client deliberately minimal.
+
+No UI framework unless the frozen Design Brief requires one.
+
+
+==================================================
+9. WEBSOCKET INTERCEPTION PLAN
+==================================================
+
+Define the exact implementation flow for:
+
+page.routeWebSocket()
+
+including:
+
+- route registration
+- connection to real server
+- message interception
+- Fibonacci step tracking
+- delay calculation
+- delay application
+- forwarding
+- corruption mutation
+- logging
+
+Specify how normal messages and corruption-test messages are distinguished.
+
+Do not write code.
+
+
+==================================================
+10. FIBONACCI JITTER PLAN
+==================================================
+
+Define the implementation algorithm for:
+
+D(n) = min(1000 × Fib(n), 8000)
+
+Specify:
+
+- Fibonacci state management
+- step progression
+- cap behavior
+- delay application
+- logging
+- verification
+
+Explicitly ensure the jitter mechanism is separate from Canvas readiness detection.
+
+
+==================================================
+11. PIXEL DETECTOR PLAN
+==================================================
+
+Define the exact implementation responsibilities for the embedded:
+
+requestAnimationFrame()
+
+loop.
+
+Specify:
+
+- Canvas context access
+- sampled coordinates
+- RGB extraction
+- tolerance calculation
+- gray-state recognition
+- active-state recognition
+- transition detection
+- T0 capture
+- cancellation/termination conditions
+
+Do not use:
+
+- static sleep for readiness
+- visibility polling
+- bounding-box state detection
+
+Do not write code.
+
+
+==================================================
+12. RACE EXECUTION PLAN
+==================================================
+
+Define the implementation sequence:
+
+T0
+↓
+race scheduling
+↓
+Hover
+↓
+Drag 15px X
+↓
+Click
+↓
+T1
+↓
+ΔT validation
+
+Use the frozen Design Brief's single browser clock domain.
+
+Define exactly how the browser records T1 when the first dispatched action reaches the Canvas.
+
+Define how the automation obtains the resulting ΔT.
+
+Define failure behavior for:
+
+ΔT < 30 ms
+ΔT > 100 ms
+
+Do not create implementation code.
+
+
+==================================================
+13. COORDINATE DRIFT PLAN
+==================================================
+
+Define the implementation responsibilities for:
+
+- reference coordinate
+- current coordinate
+- drift calculation
+- offset calculation
+- frame validation
+- coordinate update
+
+Make the algorithm directly correspond to the frozen Design Brief.
+
+Do not introduce additional movement logic.
+
+
+==================================================
+14. CIRCUIT-BREAKER PLAN
+==================================================
+
+Define:
+
+- configurable threshold
+- maximum retries
+- trigger condition
+- stale-frame detection
+- offset recalculation
+- retry behavior
+- controlled failure behavior
+- logging
+
+Ensure that retry behavior cannot become an unbounded loop.
+
+The exact design parameters must remain clearly identifiable as configuration/design parameters, not assignment requirements.
+
+
+==================================================
+15. CORRUPTED STATE PLAN
+==================================================
+
+Define the implementation sequence for the deliberate corrupted payload.
+
+Specify:
+
+1. Normal state
+2. Interception
+3. Payload mutation
+4. Delivery to frontend
+5. Representation validation
+6. Structured boundary invocation
+7. Observable result
+8. PASS/FAIL determination
+
+The expected representation contract from the frozen Design Brief must remain authoritative.
+
+Do not redesign it.
+
+
+==================================================
+16. TEST EXECUTION PLAN
+==================================================
+
+Define the integrated Q1 test sequence.
+
+It should cover all 19 acceptance criteria.
+
+Create a test scenario matrix:
+
+Test Scenario
+→ Preconditions
+→ Action
+→ Expected Result
+→ Acceptance Criteria Covered
+→ Evidence Produced
+
+Do not execute tests yet.
+
+
+==================================================
+17. ACCEPTANCE CRITERIA MAPPING
+==================================================
+
+Create a complete mapping:
+
+AC-Q1-01
+→ source/component
+→ implementation phase
+→ verification method
+
+...
+
+AC-Q1-19
+→ source/component
+→ implementation phase
+→ verification method
+
+Every acceptance criterion must have an implementation location and verification point.
+
+Do not modify acceptance criteria.
+
+
+==================================================
+18. EVIDENCE PLAN
+==================================================
+
+Define what evidence should eventually be captured for:
+
+- WebSocket interception
+- Fibonacci delays
+- 8000 ms cap
+- Canvas pixel transition
+- requestAnimationFrame
+- race timing
+- coordinate correction
+- stale frame handling
+- circuit breaker
+- corrupted payload
+- exception boundary
+- final PASS/FAIL
+
+Evidence must be real execution evidence.
+
+Do not create fake evidence now.
+
+Specify where future evidence should be stored under:
+
+Q1_Dynamic_Canvas_WebSocket/evidence/
+
+
+==================================================
+19. DEBUGGING & VERIFICATION PLAN
+==================================================
+
+The implementation must later follow:
+
+IMPLEMENT
+→ TEST
+→ EXPECTED VS ACTUAL
+→ DEBUG
+→ VERIFY
+→ REFACTOR
+→ REGRESSION TEST
+→ DOCUMENT
+→ COMMIT
+
+Define where each phase will record its information.
+
+Do not generate artificial debugging issues.
+
+Only genuine discrepancies will be recorded later.
+
+
+==================================================
+20. GIT CHECKPOINT PLAN
+==================================================
+
+Define logical commit points.
+
+Examples:
+
+- project bootstrap
+- testbed implementation
+- WebSocket interception
+- Canvas detector
+- race/circuit breaker
+- corrupted-state validation
+- verification/refactor
+
+Use the workspace's conventional commit rules.
+
+Do not create commits now.
+
+
+==================================================
+21. IMPLEMENTATION RISK ORDER
+==================================================
+
+Identify the technically riskiest implementation areas and rank them:
+
+1 = highest risk.
+
+Pay particular attention to:
+
+- WebSocket frame interception
+- delayed forwarding
+- Canvas pixel detection
+- browser timing
+- race-window reliability
+- coordinate drift
+- circuit breaker
+- corrupted state boundary
+
+For each risk, state how the implementation plan reduces it.
+
+
+==================================================
+22. IMPLEMENTATION STOP CONDITIONS
+==================================================
+
+Define explicit conditions under which implementation should stop and return to review rather than improvising.
+
+Examples:
+
+- Playwright API behaves differently than expected
+- WebSocket routing cannot satisfy the required interception behavior
+- Canvas pixel detection is unreliable
+- race timing cannot be measured correctly
+- a requirement conflicts with the frozen PRD
+- implementation requires a feature not present in the Design Brief
+
+The correct response is to document the discrepancy and request review.
+
+Do not silently change requirements.
+
+
+==================================================
+23. REQUIRED DOCUMENT
+==================================================
+
+Create:
+
+PROJECT_DOCUMENTATION/DESIGN_BRIEF/IMPLEMENTATION_PLAN_v1.0.md
+
+Do NOT modify:
+
+PRD_v1.0.md
+DESIGN_BRIEF_v1.0.md
+
+Update the Design Brief change history only if appropriate to record the implementation-plan phase.
+
+The implementation plan should be sufficiently detailed that the next prompt can authorize actual implementation without requiring another major architectural decision.
+
+
+==================================================
+24. STRICT SCOPE LOCK
+==================================================
+
+Implement exactly what Q1 requires.
+
+No:
+
+- extra features
+- extra UI
+- extra APIs
+- extra test scenarios unrelated to Q1
+- unnecessary abstractions
+- unnecessary dependencies
+- production infrastructure
+- Q2 work
+- Q3 work
+
+
+==================================================
+25. STRICT STOP CONDITION
+==================================================
+
+After creating and validating:
+
+PROJECT_DOCUMENTATION/DESIGN_BRIEF/IMPLEMENTATION_PLAN_v1.0.md
+
+STOP.
+
+Report:
+
+1. Final source directory structure (planned only).
+2. Implementation phases.
+3. Dependency plan.
+4. Highest-risk components.
+5. Acceptance-criteria coverage.
+6. Test scenario matrix summary.
+7. Evidence strategy.
+8. Planned Git checkpoints.
+9. Any unresolved technical issue.
+
+Confirm explicitly:
+
+"No implementation code was created."
+
+Then stop.
+
+We will review the implementation plan before authorizing implementation.
+
+---
+
+## Prompt 006
+**Date/Time:** 2026-08-12 23:58:35 IST
+**Purpose:** Q1 Implementation Plan v1.0 Review & Corrections
+
+### Exact Prompt
+# Q1 Prompt 006 — Implementation Plan Correction
+
+Review IMPLEMENTATION_PLAN_v1.0.md and make ONLY the following corrections.
+
+This is still a planning phase.
+
+DO NOT create source code.
+DO NOT install dependencies.
+DO NOT initialize npm.
+DO NOT modify the PRD.
+DO NOT modify the frozen Design Brief.
+DO NOT modify Q2 or Q3.
+
+Record this exact prompt as Q1 Prompt 006.
+
+==================================================
+1. FIX CIRCUIT-BREAKER COORDINATE CALCULATION
+==================================================
+
+The current plan uses:
+
+δx = |X_current - X_reference|
+X_new = X_reference + δx
+
+This loses the direction of movement.
+
+Replace the coordinate model with signed deltas:
+
+dx = X_current - X_reference
+dy = Y_current - Y_reference
+
+X_new = X_reference + dx
+Y_new = Y_reference + dy
+
+Use absolute magnitudes only for threshold comparison:
+
+abs(dx)
+abs(dy)
+
+The implementation must account for both X and Y coordinate
+deviation.
+
+Do not assume movement is always positive on the X axis.
+
+==================================================
+2. DEFINE REAL STALE-FRAME / REPAINT-LAG HANDLING
+==================================================
+
+The current plan relies primarily on a pre-action coordinate check.
+
+That is insufficient to demonstrate actual handling of stale frames
+and browser repaint lag.
+
+Add a minimal freshness mechanism to the design.
+
+The Canvas/testbed should expose enough state to allow the automation
+to determine whether the coordinate/state snapshot is still current.
+
+Use a minimal mechanism such as:
+
+- frameId
+- stateVersion
+- render timestamp
+- target coordinate version
+
+or an equivalent mechanism.
+
+The automation must be able to distinguish:
+
+CURRENT FRAME
+from
+STALE FRAME
+
+and detect when a target position/state changes between the
+validated frame and the action.
+
+Define how repaint lag is detected and how the circuit breaker
+responds.
+
+Do NOT add unnecessary complexity.
+
+==================================================
+3. RESOLVE LOCAL HTTP SERVING
+==================================================
+
+The current plan contains a local WebSocket server and a browser
+client but does not explicitly define how Playwright loads the
+Canvas application's index.html.
+
+Update the implementation plan to use the minimum necessary
+local HTTP serving mechanism.
+
+Prefer Node.js built-in `http` rather than adding Express or
+another HTTP framework.
+
+The same local server process may provide:
+
+HTTP:
+- index.html
+- canvas_app.js
+- style.css
+
+WebSocket:
+- testbed state stream
+
+Do not add another dependency unless technically necessary.
+
+Ensure AC-Q1-01 has a concrete browser-accessible local URL.
+
+==================================================
+4. DEFINE T1 PRECISELY
+==================================================
+
+Clarify the timing model:
+
+T0 =
+browser performance.now() timestamp when the Canvas pixel-state
+transition has been validated.
+
+T1 =
+browser performance.now() timestamp when the FIRST required
+interaction event reaches the Canvas target.
+
+For this implementation, explicitly identify that event as the
+initial hover/pointer-entry event.
+
+Then:
+
+ΔT = T1 - T0
+
+and:
+
+30 ms <= ΔT <= 100 ms
+
+The subsequent required interaction sequence remains:
+
+Hover
+→ Drag 15px on X-axis
+→ Click
+
+Do not change the assignment requirement.
+
+==================================================
+5. RE-AUDIT ACCEPTANCE CRITERIA
+==================================================
+
+After these corrections, re-check all 19 Q1 acceptance criteria.
+
+Ensure:
+
+AC-Q1-13:
+coordinate deviation is handled with signed X/Y offsets.
+
+AC-Q1-14:
+stale frames have an explicit detection mechanism.
+
+AC-Q1-15:
+browser repaint lag has an explicit detection/handling mechanism.
+
+AC-Q1-16:
+the circuit breaker dynamically updates offsets.
+
+AC-Q1-01:
+the browser can actually load the local testbed.
+
+AC-Q1-12:
+T0/T1/ΔT are measured in the same browser clock domain.
+
+Do not add or remove acceptance criteria.
+
+==================================================
+6. UPDATE DOCUMENTATION
+==================================================
+
+Update:
+
+PROJECT_DOCUMENTATION/DESIGN_BRIEF/IMPLEMENTATION_PLAN_v1.0.md
+
+Update the appropriate change-history documentation.
+
+Do not create a new implementation-plan version unless required by
+the existing versioning rules; record this as a material revision
+to v1.0 if appropriate.
+
+Do not modify the frozen PRD or Design Brief.
+
+==================================================
+7. STRICT STOP
+==================================================
+
+After completing the corrections:
+
+STOP.
+
+Report:
+
+1. Exact changes made.
+2. Final coordinate-drift model.
+3. Stale-frame mechanism.
+4. Repaint-lag mechanism.
+5. Local HTTP serving mechanism.
+6. Final T0/T1 definition.
+7. Confirmation that all 19 ACs remain covered.
+8. Confirmation that ZERO implementation code was created.
+
+Do not begin implementation.
+
+---
+
+## Prompt 007
+**Date/Time:** 2026-08-13 00:03:01 IST
+**Purpose:** Q1 Implementation Execution Granularity Revision (Four Milestones)
+
+### Exact Prompt
+# Q1 Prompt 007 — Revise Implementation Execution into Four Milestones
+
+The approved Q1 Implementation Plan v1.0 (Rev 1) remains authoritative.
+
+We are changing ONLY the execution granularity because the assignment
+deadline is 13 August 2026 at 12:00 PM.
+
+Do NOT change the architecture, requirements, acceptance criteria,
+technology stack, or implementation responsibilities.
+
+Record this exact prompt in:
+
+Q1_Dynamic_Canvas_WebSocket/prompts/Q1_Prompt_History.md
+
+
+==================================================
+NEW EXECUTION STRATEGY
+==================================================
+
+Instead of stopping after every small implementation phase, group the
+approved ten implementation phases into FOUR large implementation
+milestones.
+
+The engineering workflow remains mandatory, but verification and
+debugging will occur at milestone boundaries.
+
+The workflow is:
+
+IMPLEMENT MILESTONE
+→ TEST
+→ EXPECTED vs ACTUAL
+→ DEBUG
+→ VERIFY
+→ REGRESSION TEST
+→ REFACTOR / CLEAN UP
+→ DOCUMENT
+→ COMMIT
+→ NEXT MILESTONE
+
+
+==================================================
+MILESTONE 1 — FOUNDATION & TESTBED
+==================================================
+
+Combine approved Phases 1–3.
+
+Implement:
+
+- project configuration
+- package.json
+- tsconfig.json
+- centralized Q1 configuration
+- local Node.js HTTP server
+- local WebSocket server
+- HTML5 Canvas client
+- Canvas state machine
+- 4x4 grid
+- Gray loading state
+- Blue active state
+- target state/version tracking
+- frame freshness foundation
+
+Expected result:
+
+Playwright/browser can load the local application through HTTP and
+the Canvas can communicate with the local WebSocket testbed.
+
+After the milestone:
+
+- test all M1 functionality
+- compare expected vs actual
+- debug genuine discrepancies
+- verify
+- perform regression testing
+- perform necessary cleanup
+- document
+- create Git checkpoint
+
+
+==================================================
+MILESTONE 2 — NETWORK INTERCEPTION & PIXEL DETECTION
+==================================================
+
+Combine approved Phases 4–6.
+
+Implement:
+
+- Playwright automation harness
+- page.routeWebSocket()
+- WebSocket frame interception
+- Fibonacci jitter
+- 8000 ms cap
+- frame forwarding
+- corrupted-frame mutation mechanism foundation
+- requestAnimationFrame pixel detector
+- getImageData RGB detection
+- Gray → Blue state transition detection
+- browser performance.now() T0 capture
+
+Respect all frozen requirements:
+
+- no static sleep for Canvas readiness
+- no visibility polling
+- no bounding-box state detection
+
+After the milestone:
+
+- test WS interception
+- test Fibonacci timing/cap
+- test Canvas pixel detection
+- verify T0
+- compare expected vs actual
+- debug
+- regression test
+- cleanup
+- document
+- commit
+
+
+==================================================
+MILESTONE 3 — RACE, DRIFT & CIRCUIT BREAKER
+==================================================
+
+Combine approved Phases 7–8.
+
+Implement:
+
+- single browser clock race timing
+- T1 at first pointerenter/hover event
+- T0/T1/ΔT
+- 30–100 ms validation
+- Hover → Drag 15px X-axis → Click
+- signed 2D coordinate drift
+- stale-frame detection
+- repaint-lag detection
+- frame freshness validation
+- dynamic offset update
+- bounded circuit-breaker retries
+
+Use:
+
+dx = X_current - X_reference
+dy = Y_current - Y_reference
+
+and preserve movement direction.
+
+After the milestone:
+
+- run the complete race scenario
+- test positive and negative drift
+- test stale-frame handling
+- test repaint-lag handling
+- test circuit-breaker retry limit
+- compare expected vs actual
+- debug aggressively
+- regression test
+- cleanup
+- document
+- commit
+
+This is the highest-priority/highest-risk milestone.
+
+
+==================================================
+MILESTONE 4 — CORRUPTION, INTEGRATION & FINAL VERIFICATION
+==================================================
+
+Combine approved Phases 9–10.
+
+Implement:
+
+- corrupted WebSocket representation injection
+- representation contract validation
+- structured frontend exception boundary
+- silent corruption detection
+- integrated Q1 test suite
+- structured evidence logging
+
+Run all six approved Q1 test scenarios.
+
+Verify all 19 acceptance criteria.
+
+Then perform:
+
+1. Expected vs Actual audit
+2. Genuine debugging
+3. Regression testing
+4. Dead-code cleanup
+5. Refactoring verification
+6. Evidence verification
+7. Prompt-history verification
+8. Documentation verification
+9. Git history verification
+10. Final scope-lock audit
+
+Do not add features.
+
+
+==================================================
+GIT CHECKPOINT STRATEGY
+==================================================
+
+Use one primary implementation commit per milestone rather than
+individual commits for every tiny phase.
+
+Suggested checkpoints:
+
+M1:
+feat(q1): implement foundation and canvas testbed
+
+M2:
+feat(q1): implement websocket interception and pixel detection
+
+M3:
+feat(q1): implement race execution and circuit breaker
+
+M4:
+feat(q1): complete corruption validation and q1 integration
+
+
+If genuine debugging requires a separate fix commit, use the
+appropriate conventional fix commit rather than hiding the fix.
+
+
+==================================================
+IMPORTANT
+==================================================
+
+This is an EXECUTION-GRANULARITY change only.
+
+Do not alter:
+
+- PRD
+- Design Brief
+- acceptance criteria
+- architecture
+- dependency requirements
+- evidence requirements
+- scope-lock rules
+
+Do not remove verification.
+
+We are batching implementation, not skipping engineering discipline.
+
+
+==================================================
+STOP CONDITION
+==================================================
+
+After updating the implementation execution strategy:
+
+STOP.
+
+Do not implement code from this prompt.
+
+Report the four milestone boundaries and confirm that the frozen
+technical requirements remain unchanged.
+
+---
+
+## Prompt 008
+**Date/Time:** 2026-08-13 00:05:41 IST
+**Purpose:** Q1 Milestone 1 Implementation Authorization
+
+### Exact Prompt
+# Q1 Prompt 008 — Implement Milestone 1: Foundation & Testbed
+
+We are now AUTHORIZING IMPLEMENTATION of:
+
+Q1 — MILESTONE 1: FOUNDATION & TESTBED
+
+The following documents are frozen and authoritative:
+
+1. Original assignment PDF
+2. PROJECT_DOCUMENTATION/PRD/PRD_v1.0.md
+3. PROJECT_DOCUMENTATION/DESIGN_BRIEF/DESIGN_BRIEF_v1.0.md
+4. PROJECT_DOCUMENTATION/DESIGN_BRIEF/IMPLEMENTATION_PLAN_v1.0.md
+5. .agents/AGENTS.md
+6. PROJECT_DOCUMENTATION/WORKFLOW_RULES/AI_ENGINEERING_WORKFLOW.md
+
+The approved execution strategy groups implementation into four
+large milestones.
+
+We are implementing ONLY Milestone 1.
+
+Record this exact prompt as:
+
+Q1 Prompt 008
+
+in:
+
+Q1_Dynamic_Canvas_WebSocket/prompts/Q1_Prompt_History.md
+
+IMPORTANT:
+Do not create a new prompt number if Prompt 008 already exists.
+Preserve chronological ordering and exact prompt text.
+
+If the previous milestone-strategy prompt was incorrectly recorded
+as Prompt 007 despite an earlier Prompt 007 already existing,
+correct ONLY the numbering/metadata necessary to restore a
+consistent chronological prompt history. Do not delete or
+paraphrase any prompt text.
+
+
+==================================================
+MILESTONE 1 SCOPE
+==================================================
+
+Milestone 1 combines the approved Implementation Plan phases:
+
+Phase 1 — Project & Configuration Setup
+Phase 2 — Local WebSocket Server
+Phase 3 — Canvas Testbed
+
+The goal is to finish with a COMPLETE, WORKING LOCAL TESTBED.
+
+At the end of this milestone:
+
+Browser
+    ↓ HTTP
+Local Node Server
+    ↓ WebSocket
+Canvas Testbed
+
+must work locally.
+
+The Canvas must be able to receive WebSocket state updates and
+render the required state transitions.
+
+
+==================================================
+1. PROJECT STRUCTURE
+==================================================
+
+All implementation must remain under:
+
+Q1_Dynamic_Canvas_WebSocket/source/
+
+Create only the files/directories genuinely required for Milestone 1.
+
+The approved conceptual structure is:
+
+source/
+├── package.json
+├── tsconfig.json
+├── config/
+│   └── q1_config.ts
+├── server/
+│   └── app_server.ts
+└── client/
+    ├── index.html
+    ├── canvas_app.js
+    └── style.css
+
+Do not create:
+
+- automation/
+- Playwright test files
+- WebSocket interception code
+- pixel detector
+- race executor
+- circuit breaker
+- corrupted-state tests
+- integrated Q1 suite
+
+Those belong to later milestones.
+
+
+==================================================
+2. PROJECT CONFIGURATION
+==================================================
+
+Create the minimum Node.js + TypeScript project foundation.
+
+Required dependencies:
+
+- TypeScript
+- Playwright
+- ws
+- @types/ws
+
+Use a Playwright version supporting:
+
+page.routeWebSocket()
+
+Do not introduce:
+
+- Express
+- React
+- Vue
+- databases
+- unnecessary frameworks
+- unnecessary utilities
+
+Use strict TypeScript configuration.
+
+Do not over-engineer the project configuration.
+
+
+==================================================
+3. CENTRAL CONFIGURATION
+==================================================
+
+Implement:
+
+config/q1_config.ts
+
+Keep assignment constants separate from configurable design
+parameters.
+
+Assignment constants:
+
+- FIBONACCI_BASE_DELAY = 1000
+- FIBONACCI_MAX_CAP = 8000
+- RACE_WINDOW_MIN_MS = 30
+- RACE_WINDOW_MAX_MS = 100
+- DRAG_X_DISTANCE_PX = 15
+
+Configurable design parameters:
+
+- LOCAL_SERVER_PORT = 8080
+- LOCAL_APP_URL = http://localhost:8080
+- CANVAS_WIDTH = 800
+- CANVAS_HEIGHT = 600
+- COLOR_GRAY_RGB = [128, 128, 128]
+- COLOR_BLUE_RGB = [0, 85, 255]
+- DESIGN_PARAM_DRIFT_THRESHOLD = 20
+- DESIGN_PARAM_MAX_RETRIES = 3
+- TARGET_RACE_DELAY_MS = 50
+
+Use appropriate TypeScript types.
+
+Do not add speculative configuration values.
+
+
+==================================================
+4. LOCAL HTTP + WEBSOCKET SERVER
+==================================================
+
+Implement:
+
+server/app_server.ts
+
+Use Node's built-in HTTP server to serve the static Canvas client.
+
+The same process must also provide the WebSocket server using:
+
+ws
+
+The application must therefore provide:
+
+HTTP:
+http://localhost:8080
+
+and a local WebSocket endpoint.
+
+Do NOT add Express.
+
+The HTTP server must correctly serve:
+
+- index.html
+- canvas_app.js
+- style.css
+
+Handle normal local browser requests appropriately.
+
+Handle WebSocket connections appropriately.
+
+Provide clean startup and shutdown behavior.
+
+The server should log enough information to establish:
+
+- HTTP server started
+- WebSocket server started
+- WebSocket client connected
+- WebSocket client disconnected
+
+Do not implement interception or jitter yet.
+
+
+==================================================
+5. WEBSOCKET MESSAGE MODEL
+==================================================
+
+Implement the minimum message model required by the frozen
+Design Brief.
+
+The server must be able to send Canvas state information through
+WebSocket messages.
+
+Messages must support the minimum information required to represent:
+
+- loading state
+- active state
+- target position
+- frame freshness
+- target freshness/version
+
+Use a simple JSON representation.
+
+At minimum, the state model must make it possible for the client
+to know:
+
+- current state
+- target X
+- target Y
+- frameId
+- targetVersion
+
+Do not add unnecessary application fields.
+
+
+==================================================
+6. CANVAS TESTBED
+==================================================
+
+Implement the minimum HTML5 Canvas testbed.
+
+Canvas:
+
+800 × 600
+
+Layout:
+
+4 × 4 grid
+
+Target:
+
+Use the coordinates defined by the approved Design Brief.
+
+Initial state:
+
+LOADING
+
+Visual representation:
+
+Gray loading state.
+
+Active state:
+
+BLUE target/state representation.
+
+The Canvas should visually demonstrate the state transition:
+
+LOADING
+    ↓
+ACTIVE
+
+The implementation must be driven by WebSocket messages rather
+than hardcoded visual-only transitions.
+
+Do not implement the pixel detector yet.
+
+Do not use requestAnimationFrame for detection yet.
+
+Do not implement Playwright yet.
+
+
+==================================================
+7. TARGET POSITION & FRESHNESS FOUNDATION
+==================================================
+
+Implement the foundational state required by later milestones:
+
+- target X
+- target Y
+- frameId
+- targetVersion
+
+The Canvas rendering layer should update these values when the
+corresponding WebSocket state arrives.
+
+The testbed should be capable of representing a target position
+change so that later milestones can test:
+
+- coordinate drift
+- stale frames
+- repaint lag
+
+Do NOT implement the circuit breaker yet.
+
+Do NOT implement retry logic yet.
+
+Only establish the state information required by later milestones.
+
+
+==================================================
+8. MINIMAL CLIENT UI
+==================================================
+
+The client should contain ONLY what is necessary to demonstrate
+the testbed.
+
+Required:
+
+- Canvas
+- minimal status/debug information if genuinely useful
+
+Do not create:
+
+- navigation
+- dashboard
+- decorative components
+- animations unrelated to the assignment
+- unnecessary controls
+- polished UI
+
+This is a testing testbed, not a production application.
+
+
+==================================================
+9. MILESTONE 1 ACCEPTANCE VALIDATION
+==================================================
+
+After implementation, validate the entire Milestone 1 rather than
+testing individual files in isolation.
+
+The following must be demonstrably true:
+
+M1-01:
+The Node application starts successfully.
+
+M1-02:
+The local HTTP server serves the Canvas application.
+
+M1-03:
+The browser can load:
+
+http://localhost:8080
+
+M1-04:
+The browser establishes the local WebSocket connection.
+
+M1-05:
+The WebSocket server sends a valid initial state.
+
+M1-06:
+The Canvas starts in LOADING/gray state.
+
+M1-07:
+A WebSocket state update changes the Canvas to ACTIVE/blue state.
+
+M1-08:
+The Canvas renders the target at the expected coordinates.
+
+M1-09:
+frameId and targetVersion are present and update correctly.
+
+M1-10:
+The target can receive a changed coordinate/state through the
+WebSocket message model.
+
+M1-11:
+No Milestone 2+ functionality has been implemented.
+
+
+==================================================
+10. EXPECTED VS ACTUAL
+==================================================
+
+Compare the implemented Milestone 1 against the expected behavior.
+
+Use:
+
+PROJECT_DOCUMENTATION/IMPLEMENTATION_DEBUG/EXPECTED_VS_ACTUAL.md
+
+Record only genuine discrepancies.
+
+For each genuine issue use:
+
+- Expected Behavior
+- Actual Behavior
+- Difference & Root Cause
+- Fix Applied
+- Verification Method & Status
+
+Do not manufacture debugging issues.
+
+If no discrepancy occurs, record that the milestone matched the
+expected behavior.
+
+
+==================================================
+11. MILESTONE 1 TESTING
+==================================================
+
+Perform real execution testing.
+
+At minimum verify:
+
+1. Server startup.
+2. HTTP page loading.
+3. WebSocket connection.
+4. Initial LOADING state.
+5. ACTIVE state transition.
+6. Target coordinate rendering.
+7. frameId behavior.
+8. targetVersion behavior.
+9. graceful server shutdown.
+
+Use real terminal/browser execution.
+
+Do not claim success without actual evidence.
+
+
+==================================================
+12. DEBUGGING
+==================================================
+
+If a genuine problem appears:
+
+1. Compare Expected vs Actual.
+2. Identify root cause.
+3. Apply the smallest correct fix.
+4. Re-run the affected test.
+5. Re-run the relevant Milestone 1 regression tests.
+6. Document the issue and resolution.
+
+Do not change frozen requirements to make a test pass.
+
+Do not introduce unrelated fixes.
+
+
+==================================================
+13. REFACTOR / DEAD CODE CHECK
+==================================================
+
+After Milestone 1 works:
+
+Inspect only the code created in this milestone.
+
+Look for:
+
+- unused imports
+- unreachable code
+- duplicate configuration
+- unnecessary abstractions
+- dead variables
+- unnecessary dependencies
+
+Remove only genuine dead code or unnecessary structure.
+
+Do not perform cosmetic refactoring.
+
+If nothing requires cleanup, explicitly record that.
+
+
+==================================================
+14. EVIDENCE
+==================================================
+
+Capture real evidence sufficient to demonstrate Milestone 1.
+
+Evidence may include:
+
+- terminal startup output
+- browser execution
+- WebSocket connection output
+- Canvas state transition
+- target rendering
+- frame/version output
+
+Store only genuine evidence under:
+
+Q1_Dynamic_Canvas_WebSocket/evidence/
+
+Do not create fake screenshots/logs.
+
+Do not create final submission video yet.
+
+
+==================================================
+15. ACCEPTANCE CRITERIA TRACEABILITY
+==================================================
+
+Milestone 1 primarily establishes the foundation for:
+
+AC-Q1-01
+AC-Q1-02
+AC-Q1-03
+AC-Q1-04
+AC-Q1-05
+AC-Q1-06
+AC-Q1-13
+AC-Q1-14
+AC-Q1-15
+AC-Q1-16
+
+Do NOT claim later acceptance criteria as passed merely because
+their foundation exists.
+
+In particular, do NOT claim:
+
+- WebSocket jitter passes
+- pixel detection passes
+- race timing passes
+- circuit breaker passes
+- corrupted-state handling passes
+
+Those belong to later milestones.
+
+
+==================================================
+16. DOCUMENTATION
+==================================================
+
+Update relevant documentation:
+
+- EXPECTED_VS_ACTUAL.md
+- DEBUG_CHANGE_HISTORY.md if a genuine debugging event occurred
+- DEAD_CODE_CLEANUP.md if cleanup occurred
+- Q1_Prompt_History.md with this exact prompt
+
+Do not modify:
+
+- PRD_v1.0.md
+- DESIGN_BRIEF_v1.0.md
+- acceptance criteria
+
+
+==================================================
+17. GIT CHECKPOINT
+==================================================
+
+After:
+
+IMPLEMENT
+→ TEST
+→ EXPECTED vs ACTUAL
+→ DEBUG
+→ VERIFY
+→ REGRESSION
+→ REFACTOR
+→ DOCUMENT
+
+create the Milestone 1 Git checkpoint.
+
+Before committing:
+
+git status
+git diff --stat
+git diff
+
+Ensure only Milestone 1 changes are staged.
+
+Use:
+
+feat(q1): implement foundation and canvas testbed
+
+Update:
+
+PROJECT_DOCUMENTATION/GIT/COMMIT_HISTORY.md
+
+with the actual commit hash.
+
+Push to origin/main.
+
+
+==================================================
+18. STRICT SCOPE LOCK
+==================================================
+
+Do NOT implement anything from Milestones 2–4.
+
+Specifically do not create:
+
+- ws_interceptor.ts
+- pixel_detector.ts
+- action_executor.ts
+- circuit_breaker.ts
+- run_q1_suite.ts
+- Playwright automation logic
+- Fibonacci jitter logic
+- rAF pixel detection logic
+- race-window execution
+- corrupted mathematical payload testing
+- exception-boundary testing
+
+Do not install dependencies beyond the approved project stack.
+
+Do not add features.
+
+
+==================================================
+19. STRICT STOP CONDITION
+==================================================
+
+After Milestone 1 is:
+
+IMPLEMENTED
+TESTED
+DEBUGGED IF NECESSARY
+VERIFIED
+REGRESSION TESTED
+CLEANED UP
+DOCUMENTED
+COMMITTED
+PUSHED
+
+STOP.
+
+Do NOT begin Milestone 2.
+
+Report:
+
+1. Final Milestone 1 file tree.
+2. Actual dependency versions installed.
+3. Server startup result.
+4. HTTP test result.
+5. WebSocket test result.
+6. Canvas state-transition result.
+7. frameId/targetVersion verification.
+8. Expected vs Actual findings.
+9. Debugging performed, if any.
+10. Refactoring/dead-code cleanup result.
+11. Evidence generated.
+12. Git commit hash.
+13. Push status.
+14. Explicit confirmation:
+
+"Milestone 2 has NOT been started."
+
+Then wait for authorization.
+
+---
+
+
+
+
+
 
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 Dynamic HTML5 Canvas Testbed</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Q1 Dynamic HTML5 Canvas Testbed</h1>
+      <div id="status-bar" class="status-bar">
+        <span>Connection: <strong id="conn-status">CONNECTING...</strong></span> |
+        <span>State: <strong id="app-state">LOADING</strong></span> |
+        <span>Target Version: <strong id="target-version">0</strong></span> |
+        <span>Render Frame: <strong id="render-frame">0</strong></span>
+      </div>
+    </header>
+
+    <main>
+      <div id="exception-boundary" class="exception-boundary" data-exception-boundary="inactive" style="display: none;">
+        <div class="exception-card">
+          <h2>Structured Representation Boundary Exception</h2>
+          <p id="exception-message">Invalid mathematical state detected at boundary.</p>
+        </div>
+      </div>
+
+      <canvas id="canvas" width="800" height="600"></canvas>
+    </main>
+
+    <footer>
+      <div id="debug-info" class="debug-info">
+        Initial loading state...
+      </div>
+    </footer>
+  </div>
+
+  <script src="canvas_app.js"></script>
+</body>
+</html>

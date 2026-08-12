@@ -1,0 +1,32 @@
+{
+  "milestone": "MILESTONE_1",
+  "status": "PASSED",
+  "timestamp": "2026-08-13T00:07:00Z",
+  "results": {
+    "M1-01_server_start": true,
+    "M1-02_http_serving": true,
+    "M1-03_browser_load": true,
+    "M1-04_ws_connect": true,
+    "M1-05_initial_state_loading": true,
+    "M1-06_canvas_gray_state": true,
+    "M1-07_ws_state_update_active": true,
+    "M1-08_canvas_blue_state": true,
+    "M1-09_frameId_targetVersion_tracking": true,
+    "M1-10_target_coordinate_message_model": true,
+    "M1-11_scope_lock_no_m2_features": true
+  },
+  "evidence": {
+    "http_status": 200,
+    "ws_endpoint": "ws://localhost:8080/ws",
+    "initial_frame": {
+      "state": "LOADING",
+      "target": { "gridId": "cell-2-2", "x": 300, "y": 200, "width": 100, "height": 100, "color": "#808080" },
+      "targetVersion": 1
+    },
+    "updated_frame": {
+      "state": "ACTIVE",
+      "target": { "gridId": "cell-2-2", "x": 300, "y": 200, "width": 100, "height": 100, "color": "#0055FF" },
+      "targetVersion": 2
+    }
+  }
+}

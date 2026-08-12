@@ -3,3 +3,9 @@
 This document tracks dead code removal, unused helper cleanup, and verified safe code deprecations.
 
 ---
+## Milestone 1 — Foundation & Testbed (Q1)
+- **Inspection Date**: 2026-08-13
+- **Scope Inspected**: `Q1_Dynamic_Canvas_WebSocket/source/` (`package.json`, `tsconfig.json`, `config/q1_config.ts`, `server/app_server.ts`, `client/index.html`, `client/canvas_app.js`, `client/style.css`).
+- **Dead Code / Unused Imports Found**: None. All written files contain minimal, strictly required source logic with zero unused imports or dead variables.
+- **Refactoring Applied**: None required.
+- **Verification**: `npx tsc` compiled cleanly with zero warnings/errors.
