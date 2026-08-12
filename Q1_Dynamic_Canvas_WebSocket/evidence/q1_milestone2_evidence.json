@@ -1,0 +1,49 @@
+{
+  "milestone": "MILESTONE_2",
+  "status": "PASSED",
+  "timestamp": "2026-08-12T18:46:50.317Z",
+  "results": {
+    "M2-01_playwright_launch": true,
+    "M2-02_browser_load_testbed": true,
+    "M2-03_route_websocket_interception": true,
+    "M2-04_websocket_frames_delayed": true,
+    "M2-05_fibonacci_progression_observable": true,
+    "M2-06_delay_capped_at_8000ms": true,
+    "M2-07_forwarded_frames_delivered": true,
+    "M2-08_canvas_active_state_reached": true,
+    "M2-09_pixel_detector_raf_loop": true,
+    "M2-10_pixel_detector_getimagedata": true,
+    "M2-11_rgb_gray_to_blue_detected": true,
+    "M2-12_t0_browser_performance_now": true,
+    "M2-13_no_static_sleep_or_dom_polling": true
+  },
+  "t0": 2814.2999999998137,
+  "sampledRgb": [
+    0,
+    85,
+    255
+  ],
+  "targetVersion": 2,
+  "jitterTrace": [
+    {
+      "step": 1,
+      "fibValue": 1,
+      "calculatedDelayMs": 1000,
+      "appliedDelayMs": 1000,
+      "capped": false,
+      "interceptedAt": 1786560404397,
+      "forwardedAt": 1786560405401,
+      "payloadSummary": "{\"type\":\"STATE_UPDATE\",\"sequence\":1,\"timestamp\":1786560404395,\"state\":\"LOADING\",\"target\":{\"gridId\":\""
+    },
+    {
+      "step": 2,
+      "fibValue": 1,
+      "calculatedDelayMs": 1000,
+      "appliedDelayMs": 1000,
+      "capped": false,
+      "interceptedAt": 1786560405404,
+      "forwardedAt": 1786560406410,
+      "payloadSummary": "{\"type\":\"STATE_UPDATE\",\"sequence\":2,\"timestamp\":1786560405401,\"state\":\"ACTIVE\",\"target\":{\"gridId\":\"c"
+    }
+  ]
+}

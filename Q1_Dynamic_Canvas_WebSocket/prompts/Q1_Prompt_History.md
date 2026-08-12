@@ -3047,6 +3047,405 @@ Then wait for authorization.
 
 ---
 
+## Prompt 009
+**Date/Time:** 2026-08-13 00:13:35 IST
+**Purpose:** Q1 Milestone 2 Implementation Authorization
+
+### Exact Prompt
+# Q1 Prompt 009 — Implement Milestone 2: Network Interception & Pixel Detection
+
+Q1 Milestone 1 has been completed, verified, committed, and pushed.
+
+Current Git baseline:
+b99ee91 docs(q1): update commit history for milestone 1
+
+Working tree is clean.
+
+We are now AUTHORIZING ONLY:
+
+Q1 — MILESTONE 2: NETWORK INTERCEPTION & PIXEL DETECTION
+
+Use the frozen:
+- PRD v1.0
+- Design Brief v1.0
+- Implementation Plan v1.0
+- four-milestone execution strategy
+- persistent workspace rules
+
+Record this exact prompt as Q1 Prompt 009 in:
+Q1_Dynamic_Canvas_WebSocket/prompts/Q1_Prompt_History.md
+
+==================================================
+MILESTONE 2 SCOPE
+==================================================
+
+Implement the approved Implementation Plan phases 4–6:
+
+1. Playwright browser automation harness
+2. Native Playwright WebSocket interception
+3. Fibonacci jitter injection
+4. WebSocket frame forwarding
+5. Embedded requestAnimationFrame pixel-state detector
+6. Canvas getImageData RGB transition detection
+7. Browser performance.now() T0 capture
+
+==================================================
+DO NOT IMPLEMENT
+==================================================
+
+Do NOT implement:
+
+- race execution
+- Hover → Drag → Click
+- T1
+- 30–100 ms race validation
+- coordinate drift engine
+- stale-frame circuit breaker
+- corrupted mathematical state testing
+- exception-boundary testing
+- integrated Q1 suite
+- M3/M4 functionality
+
+Do not modify the frozen PRD or Design Brief.
+
+==================================================
+1. PLAYWRIGHT HARNESS
+==================================================
+
+Create the minimum browser automation harness required for M2.
+
+It must launch Chromium and load:
+
+http://localhost:8080
+
+The harness must work against the existing Milestone 1 testbed.
+
+Do not redesign the testbed.
+
+==================================================
+2. WEBSOCKET INTERCEPTION
+==================================================
+
+Implement native:
+
+page.routeWebSocket()
+
+using the Playwright version already selected in the project.
+
+The interceptor must:
+
+1. observe the WebSocket route
+2. connect to the actual local server
+3. intercept incoming server messages
+4. apply the Fibonacci delay
+5. forward the message to the browser
+6. preserve normal message contents
+
+Do not introduce a proxy server or CDP unless the selected Playwright
+API genuinely fails to satisfy the requirement.
+
+If routeWebSocket behaves unexpectedly, document the discrepancy rather
+than silently changing architecture.
+
+==================================================
+3. FIBONACCI JITTER
+==================================================
+
+Implement the approved delay model:
+
+delay(n) = min(1000 × Fibonacci(n), 8000)
+
+Use the approved Fibonacci sequence beginning with:
+
+1, 1, 2, 3, 5, 8, ...
+
+The resulting delay progression should therefore be:
+
+1000
+1000
+2000
+3000
+5000
+8000
+8000
+...
+
+The delay must never exceed 8000 ms.
+
+Track/log:
+
+- Fibonacci step
+- Fibonacci value
+- calculated delay
+- message/frame association
+- forwarding time
+
+Do not use this jitter delay as Canvas state-readiness detection.
+
+==================================================
+4. FRAME FORWARDING
+==================================================
+
+After delaying a frame, forward it normally to the browser.
+
+Verify that:
+
+- messages are not lost unintentionally
+- message ordering remains understandable
+- Canvas state continues progressing
+
+Do not corrupt mathematical state in M2.
+
+That belongs to M4.
+
+==================================================
+5. PIXEL DETECTOR
+==================================================
+
+Implement the approved custom Canvas state detector.
+
+It must execute inside the browser context using:
+
+requestAnimationFrame()
+
+The detector must sample Canvas pixels using:
+
+CanvasRenderingContext2D.getImageData()
+
+Detect the transition:
+
+LOADING gray
+→
+ACTIVE blue
+
+Use the approved RGB values/tolerance from q1_config.ts.
+
+Do NOT determine readiness using:
+
+- static sleep
+- setTimeout as a readiness mechanism
+- visibility polling
+- DOM bounding boxes
+- simple element existence
+
+The state transition must be based on actual Canvas pixel data.
+
+==================================================
+6. T0
+==================================================
+
+When the detector has validated the Gray → Blue transition:
+
+capture:
+
+T0 = window.performance.now()
+
+T0 must be measured in the browser's performance clock domain.
+
+Do not calculate T0 using a Node.js timestamp.
+
+Do not implement T1 yet.
+
+==================================================
+7. M2 VALIDATION
+==================================================
+
+Create a real M2 validation flow.
+
+Verify empirically:
+
+M2-01:
+Playwright launches successfully.
+
+M2-02:
+Browser loads the local testbed.
+
+M2-03:
+page.routeWebSocket() intercepts the local WebSocket.
+
+M2-04:
+WebSocket frames are actually delayed.
+
+M2-05:
+Fibonacci delay progression is observable.
+
+M2-06:
+delay never exceeds 8000 ms.
+
+M2-07:
+forwarded frames still reach the browser.
+
+M2-08:
+Canvas reaches ACTIVE state.
+
+M2-09:
+pixel detector uses requestAnimationFrame.
+
+M2-10:
+pixel detector uses getImageData.
+
+M2-11:
+Gray → Blue transition is detected from pixel data.
+
+M2-12:
+T0 is captured using browser performance.now().
+
+M2-13:
+no static sleep/visibility polling/bounding-box readiness detection
+is used.
+
+Do not claim M3/M4 criteria as passed.
+
+==================================================
+8. EXPECTED VS ACTUAL
+==================================================
+
+Compare M2 expected behavior against actual execution.
+
+Record genuine discrepancies in:
+
+PROJECT_DOCUMENTATION/IMPLEMENTATION_DEBUG/EXPECTED_VS_ACTUAL.md
+
+If a problem occurs:
+
+Expected
+→ Actual
+→ Root Cause
+→ Fix
+→ Re-test
+→ Verification
+
+Do not fabricate issues.
+
+==================================================
+9. REGRESSION
+==================================================
+
+After fixing genuine issues, re-run:
+
+- Milestone 1 testbed startup
+- HTTP loading
+- WebSocket connectivity
+- LOADING → ACTIVE state flow
+
+Ensure M2 did not break M1.
+
+==================================================
+10. REFACTOR
+==================================================
+
+Inspect only M2 implementation.
+
+Remove only genuine:
+
+- dead code
+- unused imports
+- duplicate logic
+- unnecessary dependencies
+- unnecessary abstractions
+
+Do not perform cosmetic refactoring.
+
+==================================================
+11. EVIDENCE
+==================================================
+
+Capture real evidence for:
+
+- Playwright startup
+- WebSocket interception
+- Fibonacci delay values
+- 8000 ms cap
+- forwarded frames
+- rAF pixel detection
+- Gray → Blue detection
+- T0
+
+Store genuine evidence under:
+
+Q1_Dynamic_Canvas_WebSocket/evidence/
+
+Do not create fake evidence.
+
+==================================================
+12. DOCUMENTATION
+==================================================
+
+Update relevant:
+
+- EXPECTED_VS_ACTUAL.md
+- DEBUG_CHANGE_HISTORY.md if genuine debugging occurred
+- DEAD_CODE_CLEANUP.md if cleanup occurred
+- Q1_Prompt_History.md
+
+Do not modify frozen requirements.
+
+==================================================
+13. GIT CHECKPOINT
+==================================================
+
+After:
+
+IMPLEMENT
+→ TEST
+→ EXPECTED VS ACTUAL
+→ DEBUG
+→ VERIFY
+→ REGRESSION
+→ REFACTOR
+→ DOCUMENT
+
+inspect:
+
+git status
+git diff --stat
+git diff
+
+Stage ONLY M2-related changes.
+
+Create the milestone commit:
+
+feat(q1): implement websocket interception and pixel detection
+
+Update:
+
+PROJECT_DOCUMENTATION/GIT/COMMIT_HISTORY.md
+
+Commit and push to origin/main.
+
+==================================================
+14. STRICT STOP
+==================================================
+
+After M2 is implemented, verified, documented, committed, and pushed:
+
+STOP.
+
+Do NOT begin M3.
+
+Report:
+
+1. M2 files created/modified.
+2. Actual dependency/API versions.
+3. WebSocket interception result.
+4. Fibonacci timing evidence.
+5. 8000 ms cap evidence.
+6. Pixel detection evidence.
+7. T0 measurement evidence.
+8. M1 regression result.
+9. Expected vs Actual findings.
+10. Debugging performed.
+11. Refactoring performed.
+12. Evidence files generated.
+13. Git commit hash.
+14. Push status.
+15. Explicitly confirm:
+
+"Milestone 3 has NOT been started."
+
+---
+
+
 
 
 
