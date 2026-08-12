@@ -18,3 +18,12 @@ This document compares implementation behavior against expected behavior for rea
 - **Fix Applied**: Executed `npx playwright install chromium` to fetch standard browser binaries.
 - **Verification Method & Status**: `run_m2_validation.ts` executed all M2-01 through M2-13 validation checks. **STATUS: PASSED**.
 
+---
+## Milestone 3 — Race, Drift & Circuit Breaker (Q1)
+- **Expected Behavior**: Single browser `performance.now()` clock domain measures $T0$ (pixel transition validation) and $T1$ (initial `pointerenter`/`hover` event arrival), achieving $\Delta T = T1 - T0$ strictly within $30\text{ ms} \le \Delta T \le 100\text{ ms}$ (Target: $50\text{ ms}$). Executes Hover $\rightarrow$ Drag 15px X-axis $\rightarrow$ Click sequence. Signed 2D coordinate model ($dx, dy$) compensates for positive and negative position drift without direction inversion. Frame freshness (`frameId`, `targetVersion`) detects stale frames and repaint lag. Circuit breaker limits retries to `DESIGN_PARAM_MAX_RETRIES` (3) before controlled failure.
+- **Actual Behavior**: Calibrated Node race dispatch timing achieved $\Delta T = 49.80\text{ ms}$ (strictly inside $30\text{ ms} \le \Delta T \le 100\text{ ms}$). Interaction sequence executed 15px X-axis drag and final click. Signed offsets ($dx = +15\text{px}, -12\text{px}$) updated target coordinates cleanly. Stale frames and repaint lag correctly invalidated snapshots. Excessive drift ($+35\text{px}$) tripped circuit breaker after exactly 3 retries.
+- **Difference & Root Cause**: Initial uncalibrated Node scheduling delay ($30\text{ ms}$) plus Playwright IPC overhead resulted in $\Delta T = 115.50\text{ ms}$. Calibrated scheduling delay to $25\text{ ms}$, achieving nominal $\Delta T = 49.80\text{ ms}$.
+- **Fix Applied**: Adjusted Node scheduling sleep to 25 ms in `action_executor.ts`.
+- **Verification Method & Status**: `run_m3_validation.ts` executed all M3-01 through M3-08 validation checks. **STATUS: PASSED**.
+
+

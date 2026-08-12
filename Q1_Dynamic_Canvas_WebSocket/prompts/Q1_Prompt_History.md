@@ -3445,6 +3445,566 @@ Report:
 
 ---
 
+## Prompt 010
+**Date/Time:** 2026-08-13 00:20:29 IST
+**Purpose:** Q1 Milestone 3 Implementation Authorization
+
+### Exact Prompt
+# Q1 Prompt 010 — Implement Milestone 3: Race, Drift & Circuit Breaker
+
+Q1 Milestones 1 and 2 have been completed, verified, documented,
+committed, and pushed.
+
+We are now AUTHORIZING ONLY:
+
+Q1 — MILESTONE 3: RACE, DRIFT & CIRCUIT BREAKER
+
+Record this exact prompt as:
+
+Q1 Prompt 010
+
+in:
+
+Q1_Dynamic_Canvas_WebSocket/prompts/Q1_Prompt_History.md
+
+Preserve chronological prompt numbering and exact prompt text.
+
+
+==================================================
+AUTHORITATIVE DOCUMENTS
+==================================================
+
+Use only the frozen:
+
+1. Original assignment PDF
+2. PROJECT_DOCUMENTATION/PRD/PRD_v1.0.md
+3. PROJECT_DOCUMENTATION/DESIGN_BRIEF/DESIGN_BRIEF_v1.0.md
+4. PROJECT_DOCUMENTATION/DESIGN_BRIEF/IMPLEMENTATION_PLAN_v1.0.md
+5. .agents/AGENTS.md
+6. PROJECT_DOCUMENTATION/WORKFLOW_RULES/AI_ENGINEERING_WORKFLOW.md
+
+
+==================================================
+MILESTONE 3 SCOPE
+==================================================
+
+Implement ONLY the approved Implementation Plan phases:
+
+Phase 7:
+Race-window execution
+
+Phase 8:
+Coordinate drift + stale-frame/repaint handling +
+circuit breaker
+
+
+==================================================
+DO NOT IMPLEMENT
+==================================================
+
+Do NOT implement Milestone 4 functionality:
+
+- corrupted mathematical payload
+- "1e+7" corruption test
+- representation contract failure testing
+- frontend exception-boundary assertion
+- final integrated Q1 suite
+- final evidence audit
+
+Do not modify the PRD or frozen Design Brief.
+
+
+==================================================
+1. RACE TIMING MODEL
+==================================================
+
+Use the browser's performance clock exclusively.
+
+T0:
+
+Timestamp captured when the Canvas pixel detector has actually
+validated the Gray → Blue transition.
+
+T1:
+
+Timestamp captured when the FIRST required interaction event reaches
+the Canvas target.
+
+The first interaction event is:
+
+pointerenter / hover
+
+Therefore:
+
+ΔT = T1 - T0
+
+Required:
+
+30 ms <= ΔT <= 100 ms
+
+Do not substitute Node.js Date.now() or another clock.
+
+
+==================================================
+2. REQUIRED INTERACTION SEQUENCE
+==================================================
+
+After the validated state transition and controlled race scheduling:
+
+Hover / pointerenter
+→ Drag 15 px on X-axis
+→ Click
+
+The drag distance must be:
+
+15 px
+
+on the X axis.
+
+Do not alter the required action sequence.
+
+Do not claim the race passes merely because the actions eventually
+occur.
+
+
+==================================================
+3. RACE-WINDOW IMPLEMENTATION
+==================================================
+
+Implement the smallest deterministic mechanism that targets the
+approved design parameter:
+
+TARGET_RACE_DELAY_MS = 50 ms
+
+The 50 ms value is a target/control parameter.
+
+The actual result MUST be measured as:
+
+T1 - T0
+
+using browser performance.now().
+
+Do not replace measurement with the configured delay value.
+
+Log:
+
+- T0
+- T1
+- ΔT
+- configured target delay
+- actual interaction event
+- pass/fail against 30–100 ms
+
+If ΔT falls outside the required window, treat that as a genuine
+failure and debug it.
+
+Do not silently widen the acceptance range.
+
+
+==================================================
+4. COORDINATE REFERENCE MODEL
+==================================================
+
+Maintain:
+
+X_reference
+Y_reference
+
+and:
+
+X_current
+Y_current
+
+Calculate signed deltas:
+
+dx = X_current - X_reference
+dy = Y_current - Y_reference
+
+Use:
+
+abs(dx)
+abs(dy)
+
+ONLY for threshold comparison.
+
+When updating the coordinate:
+
+X_new = X_reference + dx
+Y_new = Y_reference + dy
+
+Never use absolute deviation as the actual movement direction.
+
+
+==================================================
+5. STALE-FRAME DETECTION
+==================================================
+
+Use the Milestone 1 freshness foundation:
+
+- frameId
+- targetVersion
+
+Before the interaction:
+
+1. capture the current frame/state snapshot
+2. validate target coordinates
+3. validate frame freshness
+4. detect whether a newer frame/state has arrived
+
+If the frame/state changes before action dispatch, the previously
+validated target must be considered stale.
+
+Do not continue blindly using stale coordinates.
+
+
+==================================================
+6. REPAINT-LAG HANDLING
+==================================================
+
+Account for the possibility that browser rendering has not caught up
+with the latest state.
+
+Use the existing Canvas freshness/state model.
+
+The automation must distinguish:
+
+state received
+from
+state actually reflected by the current Canvas frame.
+
+Do not use arbitrary long sleeps as the solution.
+
+If a repaint/freshness mismatch is detected:
+
+- invalidate the stale snapshot
+- obtain the current state
+- revalidate
+- continue only with a valid current target
+
+
+==================================================
+7. CIRCUIT BREAKER
+==================================================
+
+Implement the approved bounded circuit breaker.
+
+Use:
+
+DESIGN_PARAM_DRIFT_THRESHOLD
+DESIGN_PARAM_MAX_RETRIES
+
+The retry count must be bounded.
+
+Required conceptual flow:
+
+validate
+→ mismatch?
+→ calculate signed dx/dy
+→ update target offset
+→ retry
+→ revalidate
+
+If the mismatch remains unresolved:
+
+retry 1
+retry 2
+retry 3
+→ controlled failure
+
+Never create an unbounded retry loop.
+
+
+==================================================
+8. NORMAL-PATH VALIDATION
+==================================================
+
+Produce real execution evidence showing:
+
+fresh frame
+→ valid target
+→ T0
+→ hover/pointerenter
+→ T1
+→ ΔT
+→ drag 15 px
+→ click
+
+The measured ΔT must be within:
+
+30–100 ms
+
+Do not fabricate timing results.
+
+
+==================================================
+9. DRIFT RECOVERY VALIDATION
+==================================================
+
+Create a controlled test condition where the target position changes
+between validation and action.
+
+The implementation must demonstrate:
+
+1. original target captured
+2. target position changes
+3. stale/mismatch detected
+4. signed dx/dy calculated
+5. target coordinates updated
+6. bounded retry performed
+7. action succeeds using the current target
+
+Test both positive and negative coordinate deviation where practical.
+
+At minimum, verify that negative movement is not incorrectly converted
+into positive movement.
+
+
+==================================================
+10. STALE-FRAME VALIDATION
+==================================================
+
+Create a controlled stale-frame condition.
+
+Demonstrate:
+
+old frame
+→ detected stale
+→ rejected
+→ fresh frame obtained
+→ action proceeds
+
+Do not merely log "stale handled".
+
+The evidence must demonstrate the state/version difference.
+
+
+==================================================
+11. CIRCUIT-BREAKER LIMIT VALIDATION
+==================================================
+
+Verify the maximum retry limit.
+
+A controlled failure scenario should demonstrate that the circuit
+breaker does not retry indefinitely.
+
+The final result must be a controlled failure after the configured
+maximum retry count.
+
+Do not damage the normal successful path to perform this test.
+
+
+==================================================
+12. M3 ACCEPTANCE VALIDATION
+==================================================
+
+Verify the M3-related acceptance requirements, particularly:
+
+AC-Q1-12:
+30–100 ms race window.
+
+AC-Q1-13:
+coordinate deviation handling.
+
+AC-Q1-14:
+stale-frame handling.
+
+AC-Q1-15:
+browser repaint-lag handling.
+
+AC-Q1-16:
+the circuit breaker dynamically updates offsets.
+
+Do not claim unrelated M4 criteria.
+
+
+==================================================
+13. EXPECTED VS ACTUAL
+==================================================
+
+For every genuine M3 discrepancy:
+
+Expected
+→ Actual
+→ Root Cause
+→ Fix
+→ Re-test
+→ Verification
+
+Record in:
+
+PROJECT_DOCUMENTATION/IMPLEMENTATION_DEBUG/EXPECTED_VS_ACTUAL.md
+
+Do not fabricate issues.
+
+
+==================================================
+14. DEBUGGING PRIORITY
+==================================================
+
+M3 is the highest-risk milestone.
+
+Spend debugging effort primarily on:
+
+1. timing reliability
+2. T0/T1 correctness
+3. actual interaction event timing
+4. stale frame detection
+5. repaint lag
+6. signed coordinate correction
+7. bounded retries
+
+Do not hide flaky behavior.
+
+If a test intermittently fails, investigate the cause rather than
+simply rerunning until it passes.
+
+
+==================================================
+15. M1 + M2 REGRESSION
+==================================================
+
+After M3 implementation and debugging, re-run the relevant M1/M2
+checks:
+
+- HTTP startup
+- WebSocket connectivity
+- routeWebSocket interception
+- Fibonacci jitter
+- pixel detection
+- T0 detection
+
+Confirm that M3 did not regress previous milestones.
+
+
+==================================================
+16. REFACTOR
+==================================================
+
+Inspect M3 code for genuine:
+
+- dead code
+- unused imports
+- duplicate logic
+- unnecessary abstractions
+- unsafe retry loops
+
+Remove only genuine problems.
+
+Do not perform cosmetic refactoring.
+
+
+==================================================
+17. EVIDENCE
+==================================================
+
+Capture real evidence for:
+
+1. T0
+2. T1
+3. ΔT
+4. successful race
+5. 15 px drag
+6. coordinate drift
+7. signed dx/dy
+8. stale-frame detection
+9. repaint/freshness handling
+10. retry count
+11. circuit-breaker controlled failure
+
+Store evidence under:
+
+Q1_Dynamic_Canvas_WebSocket/evidence/
+
+Do not fabricate evidence.
+
+
+==================================================
+18. DOCUMENTATION
+==================================================
+
+Update:
+
+- EXPECTED_VS_ACTUAL.md
+- DEBUG_CHANGE_HISTORY.md if debugging occurred
+- DEAD_CODE_CLEANUP.md if cleanup occurred
+- Q1_Prompt_History.md
+
+Do not modify frozen requirements.
+
+
+==================================================
+19. GIT CHECKPOINT
+==================================================
+
+After:
+
+IMPLEMENT
+→ TEST
+→ EXPECTED VS ACTUAL
+→ DEBUG
+→ VERIFY
+→ REGRESSION
+→ REFACTOR
+→ DOCUMENT
+
+inspect:
+
+git status
+git diff --stat
+git diff
+
+Stage only M3 changes.
+
+Create:
+
+feat(q1): implement race execution and circuit breaker
+
+Update:
+
+PROJECT_DOCUMENTATION/GIT/COMMIT_HISTORY.md
+
+Commit and push to origin/main.
+
+
+==================================================
+20. STRICT STOP
+==================================================
+
+After M3 is fully implemented, tested, debugged, verified,
+regression-tested, documented, committed, and pushed:
+
+STOP.
+
+Do NOT begin Milestone 4.
+
+Report:
+
+1. M3 files created/modified.
+2. Normal race timing result.
+3. T0.
+4. T1.
+5. ΔT.
+6. 15 px drag verification.
+7. Drift recovery evidence.
+8. Signed dx/dy evidence.
+9. Stale-frame evidence.
+10. Repaint-lag evidence.
+11. Circuit-breaker retry-limit evidence.
+12. M1/M2 regression result.
+13. Expected vs Actual findings.
+14. Debugging performed.
+15. Refactoring performed.
+16. Evidence generated.
+17. Git commit hash.
+18. Push status.
+
+Finally state explicitly:
+
+"Milestone 4 has NOT been started."
+
+---
+
+
 
 
 
