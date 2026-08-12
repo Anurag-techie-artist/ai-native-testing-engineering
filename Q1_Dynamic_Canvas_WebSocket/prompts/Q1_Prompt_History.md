@@ -4004,6 +4004,435 @@ Finally state explicitly:
 
 ---
 
+## Prompt 011
+**Date/Time:** 2026-08-13 00:27:16 IST
+**Purpose:** Q1 Milestone 4 Implementation Authorization
+
+### Exact Prompt
+# Q1 Prompt 011 — Implement Milestone 4: Corruption, Integration & Final Verification
+
+Q1 Milestones 1, 2, and 3 have been completed, tested, debugged,
+verified, documented, committed, and pushed.
+
+We are now AUTHORIZING THE FINAL MILESTONE:
+
+Q1 — MILESTONE 4: CORRUPTION, INTEGRATION & FINAL VERIFICATION
+
+Record this exact prompt as:
+
+Q1 Prompt 011
+
+in:
+
+Q1_Dynamic_Canvas_WebSocket/prompts/Q1_Prompt_History.md
+
+Preserve chronological numbering and exact prompt text.
+
+
+==================================================
+AUTHORITATIVE DOCUMENTS
+==================================================
+
+Use the frozen:
+
+1. Original assignment PDF
+2. PRD_v1.0.md
+3. DESIGN_BRIEF_v1.0.md
+4. IMPLEMENTATION_PLAN_v1.0.md
+5. .agents/AGENTS.md
+6. AI_ENGINEERING_WORKFLOW.md
+
+
+==================================================
+MILESTONE 4 SCOPE
+==================================================
+
+Implement ONLY:
+
+1. Corrupted WebSocket payload validation
+2. Frontend mathematical representation validation
+3. Structured exception-boundary behavior
+4. Silent-corruption detection
+5. Full Q1 integration suite
+6. Final verification
+7. Final evidence
+8. Final cleanup/refactor
+9. Final documentation
+10. Final Git checkpoint
+
+
+==================================================
+1. CORRUPTED PAYLOAD
+==================================================
+
+Implement the approved deliberate corruption scenario.
+
+The WebSocket interceptor must mutate the relevant balance payload
+to:
+
+"1e+7"
+
+The corruption must occur through the existing WebSocket interception
+architecture.
+
+Do not create a separate corruption transport.
+
+Do not change the normal message path.
+
+
+==================================================
+2. REPRESENTATION VALIDATION
+==================================================
+
+The frontend must validate the mathematical representation according
+to the frozen Design Brief.
+
+The corrupted value must NOT be silently accepted as a valid normal
+state.
+
+Verify the actual frontend behavior.
+
+Do not merely inspect source code and claim validation passes.
+
+
+==================================================
+3. STRUCTURED EXCEPTION BOUNDARY
+==================================================
+
+When the corrupted mathematical state reaches the frontend:
+
+- detect the invalid representation
+- prevent silent rendering/acceptance
+- surface the structured UI exception-boundary behavior required by
+  the approved Design Brief
+
+The observable result must be testable.
+
+Do not add a generic error system unrelated to this requirement.
+
+Do not add unnecessary UI.
+
+
+==================================================
+4. CORRUPTION PASS / FAIL
+==================================================
+
+The test must distinguish:
+
+EXPECTED:
+corrupted state detected and structured exception boundary activated
+
+from:
+
+FAILURE:
+corrupted state silently renders/continues as normal state
+
+
+==================================================
+5. FULL INTEGRATION SUITE
+==================================================
+
+Implement:
+
+automation/run_q1_suite.ts
+
+The suite must execute the approved six Q1 scenarios.
+
+The suite must verify the relevant 19 acceptance criteria without
+inventing additional requirements.
+
+The integrated flow must include:
+
+- local HTTP startup
+- WebSocket connection
+- WebSocket interception
+- Fibonacci jitter
+- Canvas state transition
+- pixel detection
+- T0
+- race timing
+- T1
+- ΔT
+- 15 px drag
+- coordinate drift
+- stale-frame handling
+- repaint-lag handling
+- circuit breaker
+- corrupted payload
+- exception-boundary validation
+
+
+==================================================
+6. DO NOT CHEAT THE INTEGRATION TEST
+==================================================
+
+The final suite must exercise the actual implemented components.
+
+Do not replace functionality with mocks merely to make tests pass.
+
+Do not hardcode expected results as actual results.
+
+Do not copy values from previous evidence files into new evidence.
+
+Every claimed PASS must result from real execution.
+
+
+==================================================
+7. SIX SCENARIOS
+==================================================
+
+Use the six scenarios defined in the approved Implementation Plan.
+
+For each scenario record:
+
+- scenario ID
+- preconditions
+- action
+- observed result
+- expected result
+- PASS/FAIL
+- acceptance criteria covered
+
+
+==================================================
+8. ACCEPTANCE CRITERIA AUDIT
+==================================================
+
+Verify:
+
+AC-Q1-01 through AC-Q1-19
+
+Create a final traceability result showing:
+
+Acceptance Criterion
+→ Test Scenario
+→ Actual Evidence
+→ PASS/FAIL
+
+Do not mark an acceptance criterion PASS based solely on code
+inspection.
+
+Use actual execution evidence wherever the criterion is behavioral.
+
+
+==================================================
+9. REGRESSION
+==================================================
+
+Run the existing M1, M2, and M3 validation flows again.
+
+Verify that Milestone 4 has not broken:
+
+- HTTP server
+- WebSocket connection
+- interception
+- Fibonacci jitter
+- pixel detection
+- T0
+- race timing
+- drift recovery
+- stale-frame handling
+- repaint handling
+- circuit breaker
+
+
+==================================================
+10. EXPECTED VS ACTUAL
+==================================================
+
+Perform the final Expected vs Actual comparison.
+
+If genuine discrepancies occur:
+
+Expected
+→ Actual
+→ Root Cause
+→ Fix
+→ Re-test
+→ Verification
+
+Record them in:
+
+PROJECT_DOCUMENTATION/IMPLEMENTATION_DEBUG/EXPECTED_VS_ACTUAL.md
+
+Do not fabricate issues.
+
+
+==================================================
+11. FINAL REFACTOR / DEAD CODE CLEANUP
+==================================================
+
+Inspect the complete Q1 implementation.
+
+Remove ONLY genuine:
+
+- dead code
+- unused imports
+- unnecessary dependencies
+- duplicate logic
+- unreachable code
+- unsafe/unbounded loops
+
+Do not redesign working architecture.
+
+Do not perform cosmetic refactoring.
+
+After cleanup, run the complete regression suite again.
+
+
+==================================================
+12. EVIDENCE PACKAGE
+==================================================
+
+Generate final real evidence under:
+
+Q1_Dynamic_Canvas_WebSocket/evidence/
+
+At minimum capture:
+
+- M1 evidence
+- M2 evidence
+- M3 evidence
+- M4 corruption evidence
+- integrated Q1 execution evidence
+- acceptance-criteria verification
+
+Do not overwrite historical milestone evidence.
+
+Keep milestone evidence separately identifiable.
+
+Do not fabricate screenshots, logs, timings, or PASS results.
+
+
+==================================================
+13. FINAL DOCUMENTATION AUDIT
+==================================================
+
+Verify:
+
+- Q1 Prompt History contains every Q1 prompt chronologically.
+- PRD remains unchanged.
+- Design Brief remains unchanged.
+- Implementation Plan reflects the approved four-milestone strategy.
+- EXPECTED_VS_ACTUAL contains genuine issues only.
+- DEBUG_CHANGE_HISTORY is accurate.
+- DEAD_CODE_CLEANUP is accurate.
+- COMMIT_HISTORY contains actual commits.
+- evidence contains actual execution artifacts.
+
+
+==================================================
+14. FINAL SCOPE AUDIT
+==================================================
+
+Inspect the Q1 source tree.
+
+Confirm that there is:
+
+NO:
+
+- Q2 implementation
+- Q3 implementation
+- unnecessary framework
+- unnecessary API
+- database
+- production infrastructure
+- unrelated feature
+- decorative feature
+- unexplained dependency
+
+
+==================================================
+15. FINAL GIT CHECK
+==================================================
+
+Before committing:
+
+git status
+git diff --stat
+git diff
+
+Ensure only legitimate Q1 Milestone 4 and final documentation changes
+are staged.
+
+Create the final implementation checkpoint:
+
+feat(q1): complete corruption validation and q1 integration
+
+If a genuine debugging fix requires a separate commit, use an
+appropriate conventional fix commit.
+
+Update:
+
+PROJECT_DOCUMENTATION/GIT/COMMIT_HISTORY.md
+
+with actual commit hashes.
+
+Push to origin/main.
+
+Verify:
+
+git status
+
+is clean.
+
+Verify:
+
+git log --oneline -5
+
+and:
+
+git log --oneline origin/main -5
+
+show the same final history.
+
+
+==================================================
+16. FINAL STOP CONDITION
+==================================================
+
+After the complete Q1 system has been:
+
+IMPLEMENTED
+TESTED
+DEBUGGED
+VERIFIED
+REGRESSION TESTED
+REFACTORED
+DOCUMENTED
+COMMITTED
+PUSHED
+
+STOP.
+
+Do not begin Q2 or Q3.
+
+Do not add anything else to Q1.
+
+Report:
+
+1. Final Q1 file tree.
+2. Corruption test result.
+3. Exception-boundary result.
+4. Six integration scenario results.
+5. AC-Q1-01 through AC-Q1-19 results.
+6. M1/M2/M3 regression results.
+7. Genuine debugging performed.
+8. Final dead-code/refactor result.
+9. Evidence files.
+10. Final Git commit hash.
+11. Remote push status.
+12. Final working-tree status.
+13. Any unresolved issue.
+
+Finally state:
+
+"Q1 Milestone 4 is complete."
+"Q2 and Q3 have NOT been started."
+
+---
+
+
 
 
 

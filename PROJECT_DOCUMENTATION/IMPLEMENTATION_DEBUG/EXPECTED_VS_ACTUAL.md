@@ -26,4 +26,13 @@ This document compares implementation behavior against expected behavior for rea
 - **Fix Applied**: Adjusted Node scheduling sleep to 25 ms in `action_executor.ts`.
 - **Verification Method & Status**: `run_m3_validation.ts` executed all M3-01 through M3-08 validation checks. **STATUS: PASSED**.
 
+---
+## Milestone 4 — Corruption, Integration & Final Verification (Q1)
+- **Expected Behavior**: Deliberate WebSocket payload mutation (`"1e+7"` string balance payload) is parsed by `canvas_app.js`, evaluated by representation contract validator, blocks silent rendering/acceptance, and activates structured DOM `#exception-boundary` UI (`#error-code` = `CORRUPTED_PAYLOAD`). Full integration suite (`run_q1_suite.ts`) executes all 6 implementation plan scenarios and verifies all 19 acceptance criteria (`AC-Q1-01` through `AC-Q1-19`).
+- **Actual Behavior**: Scientific notation string payload `"1e+7"` triggered mathematical contract exception, prevented silent state rendering, and displayed `#exception-boundary` with `CORRUPTED_PAYLOAD` status badge. `run_q1_suite.ts` verified SC-Q1-01 through SC-Q1-06 and all 19 acceptance criteria with 100% PASS rate.
+- **Difference & Root Cause**: `SC-Q1-01` initially failed due to hardcoded 700x500 dimension check in test runner. Fixed by referencing configured `CANVAS_WIDTH` (800) and `CANVAS_HEIGHT` (600) from `q1_config.ts`.
+- **Fix Applied**: Updated `run_q1_suite.ts` to import `CANVAS_WIDTH` and `CANVAS_HEIGHT` from `q1_config.ts`. Updated `index.html` and `canvas_app.js` exception boundary IDs (`#error-code`, `#error-desc`).
+- **Verification Method & Status**: Integrated suite `run_q1_suite.ts` executed all 6 scenarios and verified AC-Q1-01 through AC-Q1-19. **STATUS: PASSED**.
+
+
 

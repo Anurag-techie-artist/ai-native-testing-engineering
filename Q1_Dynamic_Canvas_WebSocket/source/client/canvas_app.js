@@ -144,7 +144,8 @@
     if (msg.balance !== undefined) {
       if (typeof msg.balance === 'string' && (msg.balance.includes('e') || msg.balance.includes('E') || isNaN(Number(msg.balance)))) {
         // Trigger structured exception boundary
-        triggerExceptionBoundary(`Representation Contract Violation: Received non-numeric/scientific balance payload "${msg.balance}"`);
+        triggerExceptionBoundary('CORRUPTED_PAYLOAD', `Representation Contract Violation: Received non-numeric/scientific balance payload "${msg.balance}"`);
+
         return;
       }
       state.balance = Number(msg.balance);
@@ -172,7 +173,7 @@
     }
   }
 
-  function triggerExceptionBoundary(message) {
+  function triggerExceptionBoundary(code, message) {
     state.appState = 'EXCEPTION';
     if (appStateEl) {
       appStateEl.textContent = 'EXCEPTION';
@@ -182,13 +183,15 @@
       exceptionBoundaryEl.style.display = 'block';
       exceptionBoundaryEl.setAttribute('data-exception-boundary', 'triggered');
     }
-    if (exceptionMsgEl) {
-      exceptionMsgEl.textContent = message;
-    }
+    const codeEl = document.getElementById('error-code');
+    if (codeEl) codeEl.textContent = code;
+    const descEl = document.getElementById('error-desc');
+    if (descEl) descEl.textContent = message;
     if (debugInfoEl) {
-      debugInfoEl.textContent = `EXCEPTION BOUNDARY TRIGGERED: ${message}`;
+      debugInfoEl.textContent = `EXCEPTION BOUNDARY TRIGGERED [${code}]: ${message}`;
     }
   }
+
 
   // --------------------------------------------------------------------------
   // Interaction Timing Listener (Captures T1 at initial pointerenter/hover)
